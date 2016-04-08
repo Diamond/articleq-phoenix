@@ -11,6 +11,8 @@ defmodule Articleq.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    plug Guardian.Plug.VerifyHeader
+    plug Guardian.Plug.LoadResource
   end
 
   scope "/", Articleq do
@@ -22,5 +24,8 @@ defmodule Articleq.Router do
   scope "/api", Articleq do
     pipe_through :api
     resources "/users", UserController, except: [:new, :edit]
+
+    post "/login", SessionController, :create, as: :login
+    delete "/logout", SessionController, :delete, as: :logout
   end
 end

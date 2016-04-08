@@ -27,3 +27,10 @@ import_config "#{Mix.env}.exs"
 config :phoenix, :generators,
   migration: true,
   binary_id: false
+
+config :guardian, Guardian,
+  issuer: "ArticleQ",
+  ttl: {30, :days},
+  verify_issuer: true,
+  secret_key: "ZhfF9Lg5w7hr+Kcj2+7R2Gyk7uIJVHuzl5+bgBpHIolnrUmzCQzJBLmvgJ+jLenn",
+  serializer: Articleq.GuardianSerializer
