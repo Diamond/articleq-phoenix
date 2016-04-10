@@ -34,3 +34,10 @@ config :guardian, Guardian,
   verify_issuer: true,
   secret_key: "ZhfF9Lg5w7hr+Kcj2+7R2Gyk7uIJVHuzl5+bgBpHIolnrUmzCQzJBLmvgJ+jLenn",
   serializer: Articleq.GuardianSerializer
+
+config :phoenix, :format_encoders,
+  "json-api": Poison
+
+config :plug, :mimes, %{
+  "application/vnd.api+json" => ["json-api"]
+}

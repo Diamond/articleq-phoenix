@@ -10,7 +10,7 @@ defmodule Articleq.SessionController do
       user ->
         if Comeonin.Bcrypt.checkpw(password, user.encrypted_password) do
           {:ok, token, _} = Guardian.encode_and_sign(user, :api)
-          json(conn, %{token: token})
+          render(conn, "token.json", %{token: token})
         else
           login_failed(conn)
         end
@@ -19,7 +19,7 @@ defmodule Articleq.SessionController do
 
   defp login_failed(conn) do
     conn
-    |> json(%{errors: ["Invalid username/password combination!"]})
+    |> render("login_failed.json", nil)
     |> halt
   end
 end

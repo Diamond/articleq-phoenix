@@ -10,7 +10,9 @@ defmodule Articleq.Router do
   end
 
   pipeline :api do
-    plug :accepts, ["json"]
+    plug :accepts, ["json", "json-api"]
+    plug JaSerializer.ContentTypeNegotiation
+    plug JaSerializer.Deserializer
     plug Guardian.Plug.VerifyHeader
     plug Guardian.Plug.LoadResource
   end

@@ -38,7 +38,9 @@ defmodule Articleq.Mixfile do
      {:gettext, "~> 0.9"},
      {:cowboy, "~> 1.0"},
      {:comeonin, "~> 2.3"},
-     {:guardian, "~> 0.10"}]
+     {:guardian, "~> 0.10"},
+     {:corsica, "~> 0.4"},
+     {:ja_serializer, "~> 0.8.1"}]
   end
 
   # Aliases are shortcut or tasks specific to the current project.
