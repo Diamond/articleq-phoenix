@@ -4,6 +4,7 @@ defmodule Articleq.SessionController do
   alias Articleq.User
 
   def create(conn, %{"username" => username, "password" => password}) do
+    binding.pry
     case Repo.get_by(User, %{username: username}) do
       nil ->
         login_failed(conn)
@@ -19,7 +20,7 @@ defmodule Articleq.SessionController do
 
   defp login_failed(conn) do
     conn
-    |> render("login_failed.json", nil)
+    |> render("login_failed.json", %{})
     |> halt
   end
 end

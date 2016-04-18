@@ -35,5 +35,6 @@ defmodule Articleq.Endpoint do
     key: "_articleq_key",
     signing_salt: "tVih/NI3"
 
+  plug Corsica, origins: "*", allow_headers: ["accept", "content-type", "authorization"]
   plug Articleq.Router
 end
